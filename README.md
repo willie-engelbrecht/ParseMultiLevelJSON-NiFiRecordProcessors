@@ -66,6 +66,8 @@ The ValidateRecord checks that the input JSON file is valid, using the following
 }
 ```
 
+There is a handy website where you can test your nested Avro schema: https://json-schema-validator.herokuapp.com/avro.jsp
+
 The validated record will then be passed to QueryRecord, where we can using SQL with RPATH to select elements of the original JSON document we want to flatten out:
 ```
 select 	RPATH(transaction, '/GEO/location') as location,
