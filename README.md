@@ -69,11 +69,11 @@ The ValidateRecord checks that the input JSON file is valid, using the following
 The validated record will then be passed to QueryRecord, where we can using SQL with RPATH to select elements of the original JSON document we want to flatten out:
 ```
 select 	RPATH(transaction, '/GEO/location') as location,
-		RPATH(transaction, '/GEO/address') as address,
-		RPATH(transaction, '/GEO/landline') as landline,
-		RPATH(transaction, '/amount') as amount, 
-		RPATH(transaction, '/currency') as currency, 
-		RPATH(transaction, '/ts') as ts
+	RPATH(transaction, '/GEO/address') as address,
+	RPATH(transaction, '/GEO/landline') as landline,
+	RPATH(transaction, '/amount') as amount, 
+	RPATH(transaction, '/currency') as currency, 
+	RPATH(transaction, '/ts') as ts
 from FLOWFILE
 ```
 
