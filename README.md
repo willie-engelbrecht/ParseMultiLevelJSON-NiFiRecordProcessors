@@ -1,7 +1,7 @@
 # ParseMultiLevelJSON-NiFiRecordProcessors
 How to parse multi level JSON with NiFI and Avro using Record Processors
 
-This guide will describe how to take a nested or multi-level JSON document, and flatten it to a simpler JSON document using Avro, NiFi and Record Processors.
+This guide will describe how to take a nested or multi-level JSON document, and flatten it to a simpler JSON document using Avro, NiFi and Record Processors. There is a NiFi template in this guide that you can use to play with on a local installation (Process_Multi-Level_JSON_.xml)
 
 The input JSON looks sometime like: 
 ```
