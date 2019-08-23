@@ -33,3 +33,36 @@ And you would like to flatten it out so that it looks like:
 
 In NiFi you can use a combination of Record Processors and Avro schemas to define the complex structure, and simplified structure. You can also use the QueryRecord processor using RPATH to access deeper elements of the complex JSON document to to create a simplified JSON output. 
 
+An example flow would look like:
+![alt text](https://github.com/willie-engelbrecht/ParseMultiLevelJSON-NiFiRecordProcessors/blob/master/images/FlowDesign.JPG "Sample NiFi Canvas")
+
+The ValidateRecord checks that the input JSON file is valid, using the following Avro schema:
+```
+{   
+  "type" : "record",   
+  "name" : "outerschema",   
+  "fields" : [ 
+    { "name" : "transaction" , "type" : { 
+				"type": "record",
+				"name" : "middleschema",
+				"fields" : [
+					{	"name": "GEO", "type" : { 
+								"type": "record",
+								"name" : "innerschema",
+								"fields" : [
+									{ "name": "location", "type" : "string" },
+									{ "name": "address", "type" : "string" },
+									{ "name": "landline", "type" : "string" }
+								]
+						}
+					},
+					{"name": "amount", "type": "string"},
+					{"name": "currency", "type": "string"},
+					{"name": "ts", "type": "string"}							
+				]
+			}
+		}	
+	]
+}
+```
+
