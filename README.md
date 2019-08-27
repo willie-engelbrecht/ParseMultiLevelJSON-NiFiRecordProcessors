@@ -31,7 +31,7 @@ And you would like to flatten it out so that it looks like:
 }
 ```
 
-In NiFi you can use a combination of Record Processors and Avro schemas to define the complex structure, and simplified structure. You can also use the QueryRecord processor using RPATH to access deeper elements of the complex JSON document to to create a simplified JSON output. 
+In NiFi you can use a combination of Record Processors and Avro schemas to define the complex structure, and simplified structure. You can also use the QueryRecord processor using RPATH to access deeper elements of the complex JSON document to create a simplified JSON output. 
 
 An example flow would look like:
 ![alt text](https://github.com/willie-engelbrecht/ParseMultiLevelJSON-NiFiRecordProcessors/blob/master/images/FlowDesign.JPG "Sample NiFi Canvas")
@@ -68,7 +68,7 @@ The ValidateRecord checks that the input JSON file is valid, using the following
 
 There is a handy website where you can test your nested Avro schema: https://json-schema-validator.herokuapp.com/avro.jsp
 
-The validated record will then be passed to QueryRecord, where we can using SQL with RPATH to select elements of the original JSON document we want to flatten out:
+The validated record will then be passed to QueryRecord, where we can use SQL with RPATH to select elements of the original JSON document we want to flatten out:
 ```
 select 	RPATH(transaction, '/GEO/location') as location,
 	RPATH(transaction, '/GEO/address') as address,
@@ -79,7 +79,7 @@ select 	RPATH(transaction, '/GEO/location') as location,
 from FLOWFILE
 ```
 
-Which then finally procudes a more simple JSON document that you can forward on to HDFS/Hive/Kafka etc:
+Which then finally produces a more simple JSON document that you can forward on to HDFS/Hive/Kafka etc:
 ```
 {
   "location" : "51.5017398,-0.1386134",
